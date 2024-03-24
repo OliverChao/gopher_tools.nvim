@@ -116,4 +116,20 @@ function M.remove(...)
   modify(unpack(cmd_args))
 end
 
+---remove tags to struct under cursor
+---@param ... unknown
+function M.clear(...)
+  local arg = { ... }
+  if #arg == nil or arg == "" then
+    arg = { "json" }
+  end
+
+  local cmd_args = { "-clear-tags" }
+  for _, v in ipairs(arg) do
+    table.insert(cmd_args, v)
+  end
+
+  modify(unpack(cmd_args))
+end
+
 return M

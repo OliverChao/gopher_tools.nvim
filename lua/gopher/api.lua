@@ -5,6 +5,7 @@ local cmd = require "gopher._utils.commands"
 
 API.tags_add = tags.add
 API.tags_rm = tags.remove
+API.tags_clear = tags.clear
 API.test_add = tests.func_test
 API.test_exported = tests.all_exported_tests
 API.tests_all = tests.all_tests
