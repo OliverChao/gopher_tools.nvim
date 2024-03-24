@@ -5,6 +5,7 @@ local M = {
   querys = {
     struct_block = [[((type_declaration (type_spec name:(type_identifier) @struct.name type: (struct_type)))@struct.declaration)]],
     em_struct_block = [[(field_declaration name:(field_identifier)@struct.name type: (struct_type)) @struct.declaration]],
+    var_struct_block = [[((var_declaration (var_spec name:(identifier) @struct.name type: (struct_type)))@struct.declaration)]],
     package = [[(package_clause (package_identifier)@package.name)@package.clause]],
     interface = [[((type_declaration (type_spec name:(type_identifier) @interface.name type:(interface_type)))@interface.declaration)]],
     method_name = [[((method_declaration receiver: (parameter_list)@method.receiver name: (field_identifier)@method.name body:(block))@method.declaration)]],
@@ -29,7 +30,11 @@ end
 ---@return table|nil
 function M.get_struct_node_at_pos(row, col, bufnr, do_notify)
   local notify = do_notify or true
-  local query = M.querys.struct_block .. " " .. M.querys.em_struct_block
+  local query = M.querys.struct_block
+    .. " "
+    .. M.querys.em_struct_block
+    .. " "
+    .. M.querys.var_struct_block
   local bufn = bufnr or vim.api.nvim_get_current_buf()
   local ns = nodes.nodes_at_cursor(query, get_name_defaults(), bufn, row, col)
   if ns == nil then
