@@ -5,9 +5,6 @@
 ---@field go string
 ---@field gomodifytags string
 ---@field gotests string
----@field impl string
----@field iferr string
----@field dlv string
 
 local M = {
   ---@type Config
@@ -17,9 +14,6 @@ local M = {
       go = "go",
       gomodifytags = "gomodifytags",
       gotests = "gotests",
-      impl = "impl",
-      iferr = "iferr",
-      dlv = "dlv",
     },
   },
 }

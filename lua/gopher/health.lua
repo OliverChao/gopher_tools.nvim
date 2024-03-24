@@ -6,14 +6,11 @@ local M = {
     plugins = {
       { lib = "plenary", help = requried_for_work_msg },
       { lib = "nvim-treesitter", help = requried_for_work_msg },
-      { lib = "dap", help = "Required for set upping debugger" },
     },
     binarys = {
       { bin = c.go, help = "required for GoMod, GoGet, GoGenerate command" },
       { bin = c.gomodifytags, help = "required for modify struct tags" },
-      { bin = c.impl, help = "required for interface implementing" },
       { bin = c.gotests, help = "required for test(s) generation" },
-      { bin = c.dlv, help = "required for debugger(nvim-dap)" },
     },
   },
 }
